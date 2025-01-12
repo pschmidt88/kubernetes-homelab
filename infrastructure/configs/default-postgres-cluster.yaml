@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homelab
+  labels:
+---
+apiVersion: kubedb.com/v1
+kind: Postgres
+metadata:
+  name: default-postgres-cluster
+  namespace: homelab
+spec:
+  version: "17.2"
+  storageType: Durable
+  storage:
+    storageClassName: "local-path"
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+  deletionPolicy: DoNotTerminate
