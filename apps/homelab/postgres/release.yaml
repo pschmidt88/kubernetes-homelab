@@ -29,11 +29,14 @@ spec:
     image:
       registry: ghcr.io
       repository: pschmidt88/bitnami-postgres-with-pgvector
-      tag: v1.0.1
+      tag: v1.0.5
     primary:
       persistence:
         storageClass: local-path
         size: 5Gi
+    global:
+      security:
+        allowInsecureImages: true
     metrics:
       enabled: true
     auth:
