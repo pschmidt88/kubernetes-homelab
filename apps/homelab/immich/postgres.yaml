@@ -7,6 +7,8 @@ spec:
   database: immich 
   dropOnDelete: false 
   masterRole: immich
+  extensions:
+    - vectors
 ---
 apiVersion: db.movetokube.com/v1alpha1
 kind: PostgresUser
