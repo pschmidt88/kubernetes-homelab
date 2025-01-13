@@ -1,0 +1,26 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: runix
+  namespace: postgres
+spec:
+  interval: 1h
+  url: https://helm.runix.net
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pgadmin4
+  namespace: postgres
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: pgadmin4
+      version: "1.34.0"
+      sourceRef:
+        kind: HelmRepository
+        name: runix
+        namespace: postgres
+      interval: 12h 
