@@ -4,3 +4,5 @@ resources:
   - namespace.yaml
   - postgres-credentials.yaml
   - release.yaml
+  - postgres-operator-credentials.yaml
+  - operator.yaml

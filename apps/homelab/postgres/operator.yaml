@@ -1,0 +1,28 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: external-postgres-operator
+  namespace: postgres
+spec:
+  interval: 12h
+  url: https://movetokube.github.io/postgres-operator/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: postgres-operator
+  namespace: postgres
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: ext-postgres-operator
+      version: "1.2.6"
+      sourceRef:
+        kind: HelmRepository
+        name: external-postgres-operator
+        namespace: postgres
+      interval: 12h
+  values:
+    existingSecret: postgres-operator-credentials
