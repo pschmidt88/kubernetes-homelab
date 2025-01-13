@@ -1,0 +1,21 @@
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
+metadata:
+  name: immich-db
+  namespace: immich
+spec:
+  database: immich 
+  dropOnDelete: false 
+  masterRole: immich
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+metadata:
+  name: immich-db-user
+  namespace: immich
+spec:
+  role: immich
+  database: immich-db
+  secretName: credentials
+  privileges: OWNER     # Can be OWNER/READ/WRITE
+---
