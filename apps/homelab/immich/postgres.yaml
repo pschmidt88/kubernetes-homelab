@@ -6,9 +6,9 @@ metadata:
 spec:
   database: immich 
   dropOnDelete: false 
-  masterRole: immich
   extensions:
     - vectors
+    - earthdistance
 ---
 apiVersion: db.movetokube.com/v1alpha1
 kind: PostgresUser
