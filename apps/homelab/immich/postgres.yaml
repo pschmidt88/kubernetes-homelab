@@ -8,6 +8,7 @@ spec:
   dropOnDelete: false 
   extensions:
     - vectors
+    - cube
     - earthdistance
 ---
 apiVersion: db.movetokube.com/v1alpha1
