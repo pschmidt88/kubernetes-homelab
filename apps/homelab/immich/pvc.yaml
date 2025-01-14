@@ -4,6 +4,8 @@ kind: PersistentVolume
 metadata:
   name: media
   namespace: immich
+  labels:
+    app: immich
 spec:
   capacity:
     storage: 1Ti
@@ -27,6 +29,9 @@ spec:
   resources:
     requests:
       storage: 1Ti
+selector:
+  matchLabels:
+    app: immich
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
