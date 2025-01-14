@@ -34,34 +34,29 @@ spec:
       DB_DATABASE_NAME:
         valueFrom:
           secretKeyRef:
-            name: credentials-immich-db-user
-            key: DATABASE_NAME
+            name: postgres-app
+            key: dbname
       DB_USERNAME:
         valueFrom:
           secretKeyRef:
-            name: credentials-immich-db-user
-            key: LOGIN
+            name: postgres-app
+            key: user
       DB_PASSWORD:
         valueFrom:
           secretKeyRef:
-            name: credentials-immich-db-user
-            key: PASSWORD
+            name: postgres-app
+            key: password
       DB_HOSTNAME:
         valueFrom:
           secretKeyRef:
-            name: credentials-immich-db-user
-            key: HOST
+            name: postgres-app
+            key: host
     image:
       tag: v1.124.2
     immich:
       persistence:
         library:
           existingClaim: data-pvc
-    postgresql:
-      global:
-        postgresql:
-          auth:
-            existingSecret: postgres-credentials
     redis:
       enabled: true
     server:
