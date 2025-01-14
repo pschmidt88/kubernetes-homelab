@@ -71,7 +71,11 @@ spec:
         main:
           enabled: true
           hosts:
-            - host: photos.rookian.home
+            - host: photos.homelab.rookian.dev
               paths:
                 - path: "/"
+          tls:
+            - hosts:
+                - photos.homelab.rookian.dev
+              secretName: tls-photos-homelab
 
