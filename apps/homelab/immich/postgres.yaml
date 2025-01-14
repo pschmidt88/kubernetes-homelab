@@ -21,3 +21,6 @@ spec:
       - name: immich
         superuser: true
         login: true
+  postgresql:
+    shared_preload_libraries:
+      - "vectors.so"
