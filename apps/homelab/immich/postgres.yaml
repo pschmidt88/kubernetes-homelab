@@ -1,24 +1,23 @@
-apiVersion: db.movetokube.com/v1alpha1
-kind: Postgres
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
 metadata:
-  name: immich-db
+  name: immich
   namespace: immich
 spec:
-  database: immich 
-  dropOnDelete: false 
-  extensions:
-    - vectors
-    - cube
-    - earthdistance
----
-apiVersion: db.movetokube.com/v1alpha1
-kind: PostgresUser
-metadata:
-  name: immich-db-user
-  namespace: immich
-spec:
-  role: immich
-  database: immich-db
-  secretName: credentials
-  privileges: OWNER     # Can be OWNER/READ/WRITE
----
+  instances: 1
+  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0
+  # Persistent storage configuration
+  storage:
+    storageClass: local-path
+    size: 10Gi
+  enableSuperuserAccess: true
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+  managed:
+    roles:
+      - name: immich
+        superuser: true
+        login: true
