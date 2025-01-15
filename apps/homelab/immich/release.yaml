@@ -70,6 +70,8 @@ spec:
       ingress:
         main:
           enabled: true
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt
           hosts:
             - host: photos.homelab.rookian.dev
               paths:
@@ -78,4 +80,3 @@ spec:
             - hosts:
                 - photos.homelab.rookian.dev
               secretName: tls-photos-homelab
-
