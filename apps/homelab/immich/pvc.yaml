@@ -5,13 +5,14 @@ metadata:
   name: media
   namespace: immich
   labels:
-    app: immich
+    type: local
 spec:
   capacity:
     storage: 1Ti
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
+  storageClassName: manual
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
     - rw
@@ -24,6 +25,7 @@ metadata:
   name: immich
   namespace: immich
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
@@ -31,7 +33,7 @@ spec:
       storage: 1Ti
 selector:
   matchLabels:
-    app: immich
+    type: local
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
