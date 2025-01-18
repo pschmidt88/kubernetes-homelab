@@ -58,3 +58,8 @@ spec:
       websecure:
         middlewares:
           - traefik-allow-only-private-ips@kubernetescrd
+    service:
+      enabled: true
+      type: LoadBalancer
+      spec:
+        externalTrafficPolicy: Local
