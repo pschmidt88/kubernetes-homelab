@@ -54,4 +54,4 @@ spec:
     ports:
       websecure:
         middlewares:
-          - allow-only-private-ips
+          - traefik-allow-only-private-ips@kubernetescrd
