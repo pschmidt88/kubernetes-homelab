@@ -50,9 +50,3 @@ spec:
   interval: 1h0m0s
   releaseName: traefik
   targetNamespace: traefik
-  values:
-    ports:
-      web:
-        exposedPort: 8080
-      websecure:
-        exposedPort: 8443
