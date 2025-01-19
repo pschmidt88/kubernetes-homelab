@@ -8,7 +8,7 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 1Ti
+    storage: 2Ti
   accessModes:
     - ReadWriteOnce
   storageClassName: manual
@@ -26,25 +26,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Ti
+      storage: 2Ti
 selector:
   matchLabels:
     type: local
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: data-pvc
-  namespace: immich
-  labels:
-    app.kubernetes.io/name: data-pvc
-    app.kubernetes.io/instance: immich
-    app.kubernetes.io/component: data-storage
-    app.kubernetes.io/part-of: immich
-spec:
-  storageClassName: local-path
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
