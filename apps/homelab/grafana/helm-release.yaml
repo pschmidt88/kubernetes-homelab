@@ -33,8 +33,7 @@ spec:
     ingress:
       enabled: true
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt
-        cert-manager.io/solver: "dns01"
+        cert-manager.io/cluster-issuer: letsencrypt-dns
       hosts:
         - grafana.homelab.rookian.dev
       tls:
