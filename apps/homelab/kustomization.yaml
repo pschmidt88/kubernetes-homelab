@@ -5,3 +5,4 @@ resources:
   - immich
   - pgadmin4
   - grafana
+  - authentik
