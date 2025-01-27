@@ -15,17 +15,17 @@ spec:
       labels: *labels
     spec:
       containers:
-      - name: tika
-        image: abhilesh7/apache-tika-arm:latest
-        imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
-          limits:
-            cpu: 200m
-            memory: 200Gi
-        ports:
-        - containerPort: 9998
-          name: gotenberg
+        - name: tika
+          image: apache/tika:3.0.0.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 200m
+              memory: 200Gi
+          ports:
+            - containerPort: 9998
+              name: gotenberg
       restartPolicy: Always
