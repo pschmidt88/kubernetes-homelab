@@ -1,0 +1,11 @@
+resources:
+  - namespace.yaml
+  - postgres.yaml
+  - secrets
+  - gotenberg
+  - tika
+  - rclone
+  - pvcs.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
