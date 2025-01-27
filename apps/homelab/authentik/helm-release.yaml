@@ -23,12 +23,10 @@ spec:
         name: goauthentik
       version: 2024.12.2
   install:
-    crds: Create
+    timeout: 10m
   interval: 1h0m0s
   releaseName: authentik
   targetNamespace: authentik
-  upgrade:
-    crds: CreateReplace
   values:
     authentik:
       postgresql:
@@ -37,8 +35,8 @@ spec:
         user: file:///postgres-creds/user
         password: file:///postgres-creds/password
       secret_key: file:///application-secrets/key
-    redis:
-      enabled: true
+      redis:
+        host: redis-master.redis.svc.cluster.local
     server:
       ingress:
         enabled: true
@@ -79,4 +77,3 @@ spec:
         - name: secrets
           mountPath: /application-secrets
           readOnly: true
-
