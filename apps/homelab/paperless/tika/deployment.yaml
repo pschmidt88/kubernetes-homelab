@@ -24,7 +24,7 @@ spec:
               memory: 100Mi
             limits:
               cpu: 200m
-              memory: 200Gi
+              memory: 1Gi
           ports:
             - containerPort: 9998
               name: gotenberg
