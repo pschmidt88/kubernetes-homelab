@@ -21,5 +21,21 @@ spec:
                     secretKeyRef:
                       name: api-keys
                       key: autostack-api-key
+                - name: SKIP_MATCH_MISS
+                  value: "true"
+                - name: CRITERIA
+                  value: |
+                    [
+                      {
+                        "key": "originalFileName",
+                        "regex": {
+                          "key": "([A-Z]+[-_]?[0-9]{4}([-_][0-9]{4})?)([\\._-].*)?\\.[\\w]{3,4}$",
+                          "index": 1
+                        }
+                      },
+                      {
+                        "key": "localDateTime"
+                      }
+                    ]
           restartPolicy: OnFailure
 ---
