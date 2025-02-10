@@ -37,8 +37,8 @@ spec:
         user: file:///postgres-creds/user
         password: file:///postgres-creds/password
       secret_key: file:///application-secrets/key
-      redis:
-        host: redis-master.redis.svc.cluster.local
+    redis:
+      enabled: true
     server:
       ingress:
         enabled: true
