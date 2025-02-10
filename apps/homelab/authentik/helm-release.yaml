@@ -21,7 +21,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: goauthentik
-      version: 2024.12.2
+      version: 2024.12.3
   install:
     timeout: 10m
   interval: 1h0m0s
