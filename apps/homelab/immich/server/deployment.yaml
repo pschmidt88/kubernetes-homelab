@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: immich-server
+  namespace: immich
   labels:
     app.kubernetes.io/instance: immich
     app.kubernetes.io/name: server
