@@ -1,0 +1,26 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: immich-server
+  labels:
+    app.kubernetes.io/instance: immich
+    app.kubernetes.io/name: server
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+spec:
+  tls:
+    - hosts:
+        - "photos.homelab.rookian.dev"
+      secretName: "tls-photos-homelab"
+  rules:
+    - host: "photos.homelab.rookian.dev"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: immich-server
+                port:
+                  number: 2283
