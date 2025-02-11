@@ -8,3 +8,4 @@ resources:
   - authentik
   - redis
   - paperless
+  - kavita
