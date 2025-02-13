@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: jellyfleet
+  labels: &labels
+    app.kubernetes.io/name: jellyfin
+spec:
+  selector:
+    matchLabels: *labels
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+      labels: *labels
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name: jellyfin
+        image: lscr.io/linuxserver/jellyfin:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 1
+            memory: 100Mi
+          limits:
+            cpu: 4
+            memory: 2Gi
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 8096
+          name: http
+        env:
+          - name: TZ
+            value: Europe/Berlin
+        volumeMounts:
+        - mountPath: /config
+          name: data
+        - mountPath: /wd-cloud
+          name: media-wd-cloud
+        - mountPath: /media
+          name: media-ssd01
+        - mountPath: /dev/dri/renderD128
+          name: device-render-d128
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data
+        - name: media-wd-cloud
+          hostPath:
+            path: /media/storage/wd-cloud
+        - name: media-ssd01
+          hostPath:
+            path: /media/storage/ssd01-1tb
+        - name: device-render-d128
+          hostPath:
+            path: /dev/dri/renderD128
+      restartPolicy: Always
+---
