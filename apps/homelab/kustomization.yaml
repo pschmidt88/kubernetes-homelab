@@ -9,4 +9,4 @@ resources:
   - redis
   - paperless
   - kavita
-  - jellyfleet
+  # - jellyfleet
