@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-external
+  namespace: jellyfleet
+spec:
+  clusterIP: None
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8096
+      targetPort: 8096
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: jellyfin-external
+  namespace: jellyfleet
+  labels:
+    kubernetes.io/service-name: jellyfin-external
+subsets:
+  - addresses:
+      - ip: 192.168.0.120
+    ports:
+      - name: http
+        port: 8096
+        protocol: TCP
+---
+# apiVersion: discovery.k8s.io/v1
+# kind: EndpointSlice
+# metadata:
+#   name: jellyfin-external
+#   namespace: jellyfleet
+#   labels:
+#     kubernetes.io/service-name: jellyfin-external
+# addressType: IPv4
+# ports:
+#   - name: http
+#     protocol: TCP
+#     port: 8096
+# endpoints:
+#   - addresses:
+#       - 192.168.0.120

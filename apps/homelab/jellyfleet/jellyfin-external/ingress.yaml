@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin
+  namespace: jellyfleet
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+spec:
+  tls:
+    - hosts:
+        - jellyfin.homelab.rookian.dev
+      secretName: tls-jellyfin-homelab
+  rules:
+    - host: jellyfin.homelab.rookian.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyfin-external
+                port:
+                  name: http
+---
