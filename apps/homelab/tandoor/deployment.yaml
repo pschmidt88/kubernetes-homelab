@@ -195,6 +195,8 @@ spec:
                 secretKeyRef:
                   name: tandoor
                   key: fdc-api-key
+            - name: SOCIAL_PROVIDERS
+              value: allauth.socialaccount.providers.openid_connect
           securityContext:
             runAsUser: 65534
       volumes:
