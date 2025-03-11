@@ -9,6 +9,4 @@ resources:
   - redis
   - paperless
   - kavita
-  - jellyfleet
   - tandoor
-  - home-assistant
