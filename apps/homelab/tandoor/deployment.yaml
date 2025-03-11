@@ -144,13 +144,13 @@ spec:
               memory: 64Mi
           volumeMounts:
             - mountPath: /opt/recipes/mediafiles
-              name: media
+              name: data
               # mount as subPath due to lost+found on ext4 pvc
-              subPath: files
+              subPath: media/files
             - mountPath: /opt/recipes/staticfiles
-              name: static
+              name: data
               # mount as subPath due to lost+found on ext4 pvc
-              subPath: files
+              subPath: static/files
           env:
             - name: DEBUG
               value: "0"
