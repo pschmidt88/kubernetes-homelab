@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - recipes.rookian.dev
+        - recipes.homelab.rookian.dev
       secretName: tls-recipes-homelab
   rules:
-    - host: recipes.rookian.dev
+    - host: recipes.homelab.rookian.dev
       http:
         paths:
           - path: /
