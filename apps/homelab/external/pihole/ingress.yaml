@@ -1,24 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ha
-  namespace: homeassistant
+  name: pihole
+  namespace: external
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-dns
 spec:
   tls:
     - hosts:
-        - ha.homelab.rookian.dev
-      secretName: tls-ha-homelab
+        - pihole.homelab.rookian.dev
+      secretName: tls-pihole-homelab
   rules:
-    - host: ha.homelab.rookian.dev
+    - host: pihole.homelab.rookian.dev
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: ha-external
+                name: pihole-external
                 port:
                   name: http
 ---

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ha-external
-  namespace: homeassistant
+  namespace: external
 spec:
   clusterIP: None
   ports:
@@ -15,7 +15,7 @@ apiVersion: v1
 kind: Endpoints
 metadata:
   name: ha-external
-  namespace: homeassistant
+  namespace: external
   labels:
     kubernetes.io/service-name: ha-external
 subsets:
