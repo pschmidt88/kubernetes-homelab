@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: immich-machine-learning
-          image: ghcr.io/immich-app/immich-machine-learning:v1.126.1
+          image: ghcr.io/immich-app/immich-machine-learning:v1.129.0
           imagePullPolicy: IfNotPresent
           env:
             - name: DB_DATABASE_NAME
@@ -86,5 +86,4 @@ spec:
             timeoutSeconds: 1
       volumes:
         - name: cache
-          emptyDir:
-            {}
+          emptyDir: {}
