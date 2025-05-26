@@ -52,10 +52,10 @@ spec:
             claimName: data
         - name: media-wd-cloud
           hostPath:
-            path: /media/storage/wd-cloud
+            path: /storage/wdmycloud-smb
         - name: media-ssd01
           hostPath:
-            path: /media/storage/ssd01-1tb
+            path: /storage/ssd02/media
         - name: device-render-d128
           hostPath:
             path: /dev/dri/renderD128
