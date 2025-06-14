@@ -2,14 +2,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - traefik
-#  - immich
+  #  - immich
   - pgadmin4
   - monitoring
-#  - authentik
+  - authentik
   - redis
   - paperless
-#  - kavita
-#  - tandoor
-#  - external
+  #  - kavita
+  #  - tandoor
+  #  - external
   - jellyfleet
-  - jellyfleet/jellyfin
+# - jellyfleet/jellyfin
