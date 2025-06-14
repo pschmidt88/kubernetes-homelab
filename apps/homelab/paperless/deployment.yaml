@@ -13,9 +13,6 @@ spec:
     metadata:
       labels: *labels
     spec:
-      securityContext:
-        runAsUser: 0
-        fsGroup: 65534
       containers:
         - name: paperless-ngx
           image: ghcr.io/paperless-ngx/paperless-ngx:2.14.5
