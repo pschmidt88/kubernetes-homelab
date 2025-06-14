@@ -32,6 +32,7 @@ spec:
     requests:
       storage: 10Gi
   volumeName: media
+  storageClassName: ""
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -66,6 +67,7 @@ spec:
     requests:
       storage: 10Gi
   volumeName: data
+  storageClassName: ""
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -100,6 +102,7 @@ spec:
     requests:
       storage: 1Gi
   volumeName: consume
+  storageClassName: ""
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -134,3 +137,4 @@ spec:
     requests:
       storage: 5Gi
   volumeName: import
+  storageClassName: ""
