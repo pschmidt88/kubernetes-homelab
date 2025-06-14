@@ -10,6 +10,6 @@ resources:
   - paperless
   #  - kavita
   #  - tandoor
-  #  - external
+  - external
   - jellyfleet
 # - jellyfleet/jellyfin
