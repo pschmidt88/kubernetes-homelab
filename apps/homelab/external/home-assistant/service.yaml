@@ -20,7 +20,7 @@ metadata:
     kubernetes.io/service-name: ha-external
 subsets:
   - addresses:
-      - ip: 192.168.0.112
+      - ip: 10.10.0.4
     ports:
       - name: http
         port: 8123
