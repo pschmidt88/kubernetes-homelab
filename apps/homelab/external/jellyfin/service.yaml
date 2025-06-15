@@ -20,7 +20,7 @@ metadata:
     kubernetes.io/service-name: jellyfin-external
 subsets:
   - addresses:
-      - ip: 192.168.0.120
+      - ip: 10.10.0.28
     ports:
       - name: http
         port: 8096
