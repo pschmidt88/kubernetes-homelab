@@ -13,7 +13,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 10.10.0.21
+    server: 10.10.0.201
     path: /mnt/tank/k8s/paperless/media
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -48,7 +48,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 10.10.0.21
+    server: 10.10.0.201
     path: /mnt/tank/k8s/paperless/data
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -83,7 +83,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 10.10.0.21
+    server: 10.10.0.201
     path: /mnt/tank/k8s/paperless/consume
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -118,7 +118,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 10.10.0.21
+    server: 10.10.0.201
     path: /mnt/tank/k8s/paperless/import
   persistentVolumeReclaimPolicy: Retain
 ---
