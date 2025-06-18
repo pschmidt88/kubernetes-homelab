@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: jellyseerr
+  namespace: jellyfleet
   labels: &labels
     app.kubernetes.io/name: jellyseerr
     app.kubernetes.io/component: jellyseerr-app
