@@ -14,4 +14,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 10.10.0.201
-    path: /mnt/k8s/configuration
+    path: /mnt/tank/k8s/configuration
