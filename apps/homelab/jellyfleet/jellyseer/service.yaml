@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyseerr
+  labels: &labels
+    app.kubernetes.io/name: jellyseer
+    app.kubernetes.io/component: jellyseer-app
+spec:
+  selector: *labels
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5055
