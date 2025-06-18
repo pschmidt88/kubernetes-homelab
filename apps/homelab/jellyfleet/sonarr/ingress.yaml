@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarr
+  namespace: jellyfleet
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+spec:
+  rules:
+    - host: sonarr.homelab.rookian.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sonarr
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - sonarr.homelab.rookian.dev
+      secretName: tls-sonarr-homelab
