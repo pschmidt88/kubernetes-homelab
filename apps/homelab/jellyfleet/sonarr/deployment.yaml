@@ -58,10 +58,11 @@ spec:
       volumes:
         - name: config
           persistentVolumeClaim:
-            claimName: jellyfleet-config
+            claimName: sonarr-config
+        - name: downloads
+          hostPath:
+            path: /data/torrents/downlodas
+            type: DirectoryOrCreate
         - name: shows
           persistentVolumeClaim:
-            claimName: shows
-        - name: downloads
-          persistentVolumeClaim:
-            claimName: downloads
+            claimName: nfs-media-shows

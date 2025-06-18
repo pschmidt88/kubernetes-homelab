@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - config-pv.yaml
   - config-pvc.yaml
+  - media-pv.yaml
+  - media-pvc.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
