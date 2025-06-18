@@ -1,23 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jellyseer
+  name: jellyseerr
   namespace: jellyfleet
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-dns
 spec:
   tls:
     - hosts:
-        - jellyseer.homelab.rookian.dev
-      secretName: tls-jellyseer-homelab
+        - jellyseerr.homelab.rookian.dev
+      secretName: tls-jellyseerr-homelab
   rules:
-    - host: jellyseer.homelab.rookian.dev
+    - host: jellyseerr.homelab.rookian.dev
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: jellyseer
+                name: jellyseerr
                 port:
                   name: web

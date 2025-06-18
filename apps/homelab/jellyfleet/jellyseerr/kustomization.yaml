@@ -5,4 +5,4 @@ resources:
   - service.yaml
   - deployment.yaml
   - ingress.yaml
-  - config-storage.yaml
+  - config-pv.yaml

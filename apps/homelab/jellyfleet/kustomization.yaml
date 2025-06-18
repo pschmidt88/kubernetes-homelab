@@ -5,4 +5,4 @@ resources:
   - namespace.yaml
   # jellyfin is currently running as a lxc container directly on the host
   # - jellyfin
-  # - jellyseer
+  - jellyseerr

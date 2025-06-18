@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jellyseer
+  name: jellyseerr
   namespace: jellyfleet
   labels: &labels
-    app.kubernetes.io/component: jellyseer-app
-    app.kubernetes.io/name: jellyseer
+    app.kubernetes.io/component: jellyseerr-app
+    app.kubernetes.io/name: jellyseerr
 spec:
   selector:
     matchLabels: *labels
@@ -16,7 +16,7 @@ spec:
       labels: *labels
     spec:
       containers:
-        - name: jellyseer
+        - name: jellyseerr
           image: fallenbagel/jellyseerr:latest
           imagePullPolicy: IfNotPresent
           resources:
@@ -26,20 +26,14 @@ spec:
             limits:
               cpu: 1 # TODO: adjust after monitoring it in grafana
               memory: 500Mi
-          env:
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: jellyseer
-                  key: DB_HOST
           ports:
             - containerPort: 5055
           volumeMounts:
-            - name: jellyseer-config
+            - name: jellyseerr-config
               mountPath: /app/config
-              subpath: jellyseer
+              subpath: jellyseerr
       volumes:
-        - name: jellyseer-config
+        - name: jellyseerr-config
           persistentVolumeClaim:
             claimName: config
       restartPolicy: Always

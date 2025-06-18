@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: jellyseerr
   labels: &labels
-    app.kubernetes.io/name: jellyseer
-    app.kubernetes.io/component: jellyseer-app
+    app.kubernetes.io/name: jellyseerr
+    app.kubernetes.io/component: jellyseerr-app
 spec:
   selector: *labels
   ports:

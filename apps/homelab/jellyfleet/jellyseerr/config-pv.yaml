@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: config
   labels:
-    app.kubernetes.io/name: jellyseer
+    app.kubernetes.io/name: jellyseerr
     app.kubernetes.io/component: config-pv
 spec:
   capacity:
@@ -21,7 +21,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: config
   labels:
-    app.kubernetes.io/name: jellyseer
+    app.kubernetes.io/name: jellyseerr
     app.kubernetes.io/component: config-pv
 
 spec:
