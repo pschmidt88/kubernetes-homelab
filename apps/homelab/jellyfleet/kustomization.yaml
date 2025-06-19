@@ -7,3 +7,4 @@ resources:
   # - jellyfin
   - jellyseerr
   - sonarr
+  - radarr
