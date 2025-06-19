@@ -36,7 +36,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-              subPath: sonarr
             - name: shows
               mountPath: /shows
             - name: downloads
@@ -57,8 +56,9 @@ spec:
             failureThreshold: 5
       volumes:
         - name: config
-          persistentVolumeClaim:
-            claimName: sonarr-config
+          hostPath:
+            path: /data/configs/sonarr
+            type: DirectoryOrCreate
         - name: downloads
           hostPath:
             path: /data/torrents/downlodas
