@@ -36,8 +36,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: shows
-              mountPath: /shows
+            - name: media-nas
+              mountPath: /storage/media-nas
+            - name: media-wdmycloud
+              mountPath: /storage/wdmycloud-smb
             - name: downloads
               mountPath: /downloads
           livenessProbe:
@@ -63,6 +65,9 @@ spec:
           hostPath:
             path: /data/torrents/downlodas
             type: DirectoryOrCreate
-        - name: shows
-          persistentVolumeClaim:
-            claimName: nfs-media-shows
+        - name: media-nas
+          hostPath:
+            path: /storage/nas-media
+        - name: media-wdmycloud
+          hostPath:
+            path: /storage/wdmycloud-smb
