@@ -45,6 +45,8 @@ spec:
               value: "Germany"
             - name: FIREWALL_OUTBOUND_SUBNETS
               value: "10.34.0.0/24"
+            - name: DNS_KEEP_NAMESERVER
+              value: "on"
       containers:
         - name: prowlarr
           image: lscr.io/linuxserver/prowlarr:latest
