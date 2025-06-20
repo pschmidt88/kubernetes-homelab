@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+  namespace: jellyfleet
+  labels: &labels
+    app.kubernetes.io/name: prowlarr
+    app.kubernetes.io/component: media-automation
+    app.kubernetes.io/instance: prowlarr
+    app.kubernetes.io/part-of: jellyfleet
+    app.kubernetes.io/version: "latest"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prowlarr
+      app.kubernetes.io/instance: prowlarr
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      nodeSelector:
+        role: downloads-media
+      containers:
+        - name: prowlarr
+          image: lscr.io/linuxserver/prowlarr:latest
+          ports:
+            - containerPort: 9696
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9696
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9696
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            failureThreshold: 5
+      volumes:
+        - name: config
+          hostPath:
+            path: /data/configs/prowlarr
+            type: DirectoryOrCreate
