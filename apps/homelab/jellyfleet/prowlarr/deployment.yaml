@@ -43,6 +43,8 @@ spec:
                   key: private_key
             - name: SERVER_COUNTRIES
               value: "Germany"
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: "10.34.0.0/24"
       containers:
         - name: prowlarr
           image: lscr.io/linuxserver/prowlarr:latest
