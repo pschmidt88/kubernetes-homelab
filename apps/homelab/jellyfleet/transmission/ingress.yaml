@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: transmission
+  namespace: jellyfleet
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+spec:
+  rules:
+    - host: transmission.homelab.rookian.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: transmission
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - transmission.homelab.rookian.dev
+      secretName: tls-transmission-homelab
