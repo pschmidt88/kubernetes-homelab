@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaresolverr
+  namespace: jellyfleet
+  labels: &labels
+    app.kubernetes.io/name: flaresolverr
+    app.kubernetes.io/component: media-automation
+    app.kubernetes.io/instance: flaresolverr
+    app.kubernetes.io/part-of: jellyfleet
+    app.kubernetes.io/version: "latest"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: flaresolverr
+      app.kubernetes.io/instance: flaresolverr
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      # nodeSelector:
+      #   role: downloads-media
+      containers:
+        - name: flaresolverr
+          image: ghcr.io/flaresolverr/flaresolverr:latest
+          ports:
+            - containerPort: 8191
+          env:
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: LANG
+              value: "en-US"
+              # TODO
+            # - name: PROMETHEUS_ENABLED
+            #   value: "true"
+          # volumeMounts:
+          #   - name: config
+          #     mountPath: /config
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8191
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8191
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            failureThreshold: 5
+      # volumes:
+      #   - name: config
+      #     hostPath:
+      #       path: /data/configs/flaresolverr
+      #       type: DirectoryOrCreate
