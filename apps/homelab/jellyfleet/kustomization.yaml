@@ -3,8 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - namespace.yaml
-  # jellyfin is currently running as a lxc container directly on the host
-  # - jellyfin
+  - nordvpn-wireguard.yaml
   - jellyseerr
   - sonarr
   - radarr

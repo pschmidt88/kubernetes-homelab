@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: nordvpn-wireguard
+  namespace: jellyfleet
+spec:
+  encryptedData:
+    private_key: AgCnFvLsvUsHLNv4d0ykRqRFaQ4tWIXCO5+MmYBNR5x7LEgf9DaoOPmYS7MgsdO9LzOg8BxddxuTzP0hy4H94rgkOj1MQHe/xKl9tq5B9LLR4PEoOYqWJ1q3tx76U+Znp5ea51j1/jMhI9iFGSk9FdUBWUce5bymeE4DNy+bPIZYc3oQYE+Yp7DpmOmsLnrflp12xWuGeV+yeDBHLGPD93xmcZZKU1jUAZa8cS9Xl5cayY+haS7bqKtJMNMLyPZzfh6Mv78tUF6NOX2JfzAyXV7saaAvJ6doPiNWeQopVu8ucr7kWKjuJFlNyJlVSVrdJTd02SJZh8pp0kGHlxXeQLBmDwQRzcy5+rmJtxWowoxNDOiMWraWMx2+FVh6ZaXF2nM6G0GS5rYsP7m0t9qwQ2V5/KY4hGrjuSFSEV/WLfwSybA+40AYTjQZfLaTk2CydHxGvVP0Q8qunZTFuay9fURJ6kJBu2YiM66OO8jVQlHM1PP65q2qZPXsGloNbxI6gYcRSXa52S6c46ZO1DmbpXS49j6IjSYraq01aPlMAejGBOMP0vwbHzQWRByJQgMiC7nrHAWVN3iUq8LAWFlUQb9+wxUxqEkVdBKI8tqJR4+g5znMQaS/hGmsNaTzH3qJKYdpLm9Hmp/j+BZnnzFQx+LqM/6FLLm9h5yP8isRq7XtxUpfOk8PFHjtE/OHjEF5LqWJ0QbD3UYhcy6HVkFUERBi5va5YFksiNLfTz5+Fwpv6tT3oNy5Ji4iaDviGA==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: nordvpn-wireguard
+      namespace: jellyfleet

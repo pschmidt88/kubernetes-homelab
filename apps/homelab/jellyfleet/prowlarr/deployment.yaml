@@ -21,6 +21,28 @@ spec:
     spec:
       nodeSelector:
         role: downloads-media
+      initContainers:
+        - name: gluetun
+          image: ghcr.io/qdm12/gluetun:v3.40.0
+          restartPolicy: Always
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          env:
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: VPN_SERVICE_PROVIDER
+              value: "nordvpn"
+            - name: VPN_TYPE
+              value: "wireguard"
+            - name: WIREGUARD_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nordvpn-wireguard
+                  key: private_key
+            - name: SERVER_COUNTRIES
+              value: "Germany"
       containers:
         - name: prowlarr
           image: lscr.io/linuxserver/prowlarr:latest
