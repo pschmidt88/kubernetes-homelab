@@ -43,6 +43,10 @@ spec:
                   key: private_key
             - name: SERVER_COUNTRIES
               value: "Germany"
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: "10.0.0.0/8"
+            - name: DNS_KEEP_NAMESERVER
+              value: "on"
       containers:
         - name: transmission
           image: lscr.io/linuxserver/transmission:latest
