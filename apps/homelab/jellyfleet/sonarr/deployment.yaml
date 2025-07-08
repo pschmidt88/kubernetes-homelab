@@ -42,6 +42,8 @@ spec:
               mountPath: /storage/wdmycloud-smb
             - name: downloads
               mountPath: /downloads
+            - name: downloads-nfs
+              mountPath: /downloads-nfs
           livenessProbe:
             httpGet:
               path: /
@@ -71,3 +73,6 @@ spec:
         - name: media-wdmycloud
           hostPath:
             path: /storage/wdmycloud-smb
+        - name: downloads-nfs
+          hostPath:
+            path: /storage/downloads

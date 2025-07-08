@@ -41,6 +41,8 @@ spec:
               mountPath: /config
             - name: downloads
               mountPath: /downloads
+            - name: downloads-nfs
+              mountPath: /downloads-nfs
           livenessProbe:
             httpGet:
               path: /
@@ -64,3 +66,6 @@ spec:
           hostPath:
             path: /data/torrents/downlodas
             type: DirectoryOrCreate
+        - name: downloads-nfs
+          hostPath:
+            path: /storage/downloads
