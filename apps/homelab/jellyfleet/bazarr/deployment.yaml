@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bazarr
+  namespace: jellyfleet
+  labels: &labels
+    app.kubernetes.io/name: bazarr
+    app.kubernetes.io/component: media-automation
+    app.kubernetes.io/instance: bazarr
+    app.kubernetes.io/part-of: jellyfleet
+    app.kubernetes.io/version: "latest"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bazarr
+      app.kubernetes.io/instance: bazarr
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      nodeSelector:
+        role: downloads-media
+      containers:
+        - name: radarr
+          image: lscr.io/linuxserver/bazarr:latest
+          ports:
+            - containerPort: 6767
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: media-nas
+              mountPath: /storage/media-nas
+            - name: media-wdmycloud
+              mountPath: /storage/wdmycloud-smb
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 6767
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 6767
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            failureThreshold: 5
+      volumes:
+        - name: config
+          hostPath:
+            path: /data/configs/bazarr
+            type: DirectoryOrCreate
+        - name: media-nas
+          hostPath:
+            path: /storage/nas-media
+        - name: media-wdmycloud
+          hostPath:
+            path: /storage/wdmycloud-smb

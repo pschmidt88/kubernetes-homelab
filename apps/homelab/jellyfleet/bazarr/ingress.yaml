@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bazarr
+  namespace: jellyfleet
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+spec:
+  rules:
+    - host: bazarr.homelab.rookian.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bazarr
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - bazarr.homelab.rookian.dev
+      secretName: tls-bazarr-homelab
