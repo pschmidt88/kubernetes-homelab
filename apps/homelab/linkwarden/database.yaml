@@ -1,0 +1,22 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+  namespace: linkwarden
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.2
+  storage:
+    storageClass: local-path
+    size: 2Gi
+  enableSuperuserAccess: false
+  bootstrap:
+    initdb:
+      database: linkwarden
+      owner: linkwarden
+  managed:
+    roles:
+      - name: linkwarden
+        superuser: true
+        login: true

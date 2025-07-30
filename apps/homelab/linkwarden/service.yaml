@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: linkwarden
+  namespace: linkwarden
+  labels:
+    app.kubernetes.io/name: linkwarden
+    app.kubernetes.io/component: bookmarks
+    app.kubernetes.io/instance: linkwarden
+    app.kubernetes.io/part-of: linkwarden
+spec:
+  selector:
+    app.kubernetes.io/name: linkwarden
+    app.kubernetes.io/instance: linkwarden
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
