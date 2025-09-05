@@ -5,7 +5,7 @@ metadata:
   name: data
   namespace: nextcloud
   labels:
-    app.kubernetes.io/name: data
+    app.kubernetes.io/name: nextcloud-data
     app.kubernetes.io/component: data-pv
 spec:
   capacity:
@@ -23,7 +23,7 @@ metadata:
   name: data
   namespace: nextcloud
   labels:
-    app.kubernetes.io/name: data
+    app.kubernetes.io/name: nextcloud-data
     app.kubernetes.io/component: data-pvc
 spec:
   accessModes:
@@ -31,6 +31,6 @@ spec:
   resources:
     requests:
       storage: 1Ti
-  volumeName: data
+  volumeName: nextcloud-data
   storageClassName: ""
 ---
