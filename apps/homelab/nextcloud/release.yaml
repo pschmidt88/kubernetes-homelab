@@ -59,6 +59,6 @@ spec:
       storageClass: local-path
       nextcloudData:
         enabled: true
-        existingClaim: data
+        existingClaim: nextcloud-data
     metrics:
       enabled: true
