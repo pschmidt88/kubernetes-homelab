@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
   - cloudflare-api.yaml
   - cluster-issuers.yaml
+  - postgres.yaml
+  - postgres-credentials.yaml

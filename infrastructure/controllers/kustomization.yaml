@@ -5,3 +5,5 @@ resources:
   - sealed-secrets.yaml
   - cnpg.yaml
   - longhorn
+  - postgres-operator.yaml
+  - external-secrets-operator.yaml
