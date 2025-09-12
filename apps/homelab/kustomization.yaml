@@ -10,6 +10,7 @@ resources:
   - paperless
   #  - kavita
   #  - tandoor
+  - navidrome
   - external
   - jellyfleet
   - linkwarden

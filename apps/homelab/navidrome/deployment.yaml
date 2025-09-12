@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: navidrome
+  namespace: navidrome
+  labels: &labels
+    app.kubernetes.io/name: navidrome
+    app.kubernetes.io/version: "latest"
+spec:
+  replicas: 1
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      nodeSelector:
+        role: downloads-media
+      containers:
+        - name: navidrome
+          image: deluan/navidrome:latest
+          ports:
+            - containerPort: 4533
+          volumeMounts:
+            - name: data
+              mountPath: /config
+            - name: music
+              mountPath: /music
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4533
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 4533
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            failureThreshold: 5
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data
+        - name: music
+          hostPath:
+            path: /storage/nas-media/music
