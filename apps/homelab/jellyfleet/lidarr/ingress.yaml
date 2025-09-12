@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lidarr
+  namespace: jellyfleet
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+spec:
+  rules:
+    - host: lidarr.homelab.rookian.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: lidarr
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - lidarr.homelab.rookian.dev
+      secretName: tls-lidarr-homelab

@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lidarr
+  namespace: jellyfleet
+  labels: &labels
+    app.kubernetes.io/name: lidarr
+    app.kubernetes.io/component: media-automation
+    app.kubernetes.io/instance: lidarr
+    app.kubernetes.io/part-of: jellyfleet
+    app.kubernetes.io/version: "latest"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: lidarr
+      app.kubernetes.io/instance: lidarr
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      nodeSelector:
+        role: downloads-media
+      containers:
+        - name: lidarr
+          image: lscr.io/linuxserver/lidarr:latest
+          ports:
+            - containerPort: 8686
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: media-nas
+              mountPath: /storage/media-nas
+            - name: media-wdmycloud
+              mountPath: /storage/wdmycloud-smb
+            - name: downloads
+              mountPath: /downloads-nfs
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8686
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8686
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            failureThreshold: 5
+      volumes:
+        - name: config
+          hostPath:
+            path: /data/configs/lidarr
+            type: DirectoryOrCreate
+        - name: downloads
+          hostPath:
+            path: /storage/downloads
+        - name: media-nas
+          hostPath:
+            path: /storage/nas-media
+        - name: media-wdmycloud
+          hostPath:
+            path: /storage/wdmycloud-smb
