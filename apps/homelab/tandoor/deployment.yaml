@@ -32,28 +32,23 @@ spec:
             - name: POSTGRES_HOST
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: host
-            - name: POSTGRES_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-app
-                  key: port
+                  name: postgres-tandoor
+                  key: HOST
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: user
+                  name: postgres-tandoor
+                  key: LOGIN
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: dbname
+                  name: postgres-tandoor
+                  key: DATABASE_NAME
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: password
+                  name: postgres-tandoor
+                  key: PASSWORD
           image: vabene1111/recipes
           imagePullPolicy: Always
           resources:
@@ -168,28 +163,23 @@ spec:
             - name: POSTGRES_HOST
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: host
-            - name: POSTGRES_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-app
-                  key: port
+                  name: postgres-tandoor
+                  key: HOST
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: user
+                  name: postgres-tandoor
+                  key: LOGIN
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: dbname
+                  name: postgres-tandoor
+                  key: DATABASE_NAME
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres-app
-                  key: password
+                  name: postgres-tandoor
+                  key: PASSWORD
             - name: FDC_API_KEY
               valueFrom:
                 secretKeyRef:

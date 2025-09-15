@@ -9,7 +9,7 @@ resources:
   - redis
   - paperless
   #  - kavita
-  #  - tandoor
+  - tandoor
   - navidrome
   - external
   - jellyfleet

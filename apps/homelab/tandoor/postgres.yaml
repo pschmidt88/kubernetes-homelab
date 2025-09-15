@@ -1,22 +1,20 @@
 ---
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
 metadata:
-  name: postgres
+  name: tandoor
   namespace: tandoor
 spec:
-  instances: 1
-  imageName: ghcr.io/cloudnative-pg/postgresql:17.2
-  storage:
-    storageClass: local-path
-    size: 1Gi
-  enableSuperuserAccess: false
-  bootstrap:
-    initdb:
-      database: tandoor
-      owner: tandoor
-  managed:
-    roles:
-      - name: tandoor
-        superuser: true
-        login: true
+  database: tandoor
+  dropOnDelete: false
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+metadata:
+  name: tandoor
+  namespace: tandoor
+spec:
+  role: tandoor
+  database: tandoor # This references the Postgres CR
+  secretName: postgres
+  privileges: OWNER # Can be OWNER/READ/WRITE
