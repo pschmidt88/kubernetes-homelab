@@ -25,3 +25,5 @@ spec:
   interval: 1m0s
   values:
     existingSecret: postgres-credentials
+    image:
+      tag: 2.2.0
