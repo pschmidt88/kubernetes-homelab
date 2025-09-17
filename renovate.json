@@ -7,7 +7,7 @@
     "managerFilePatterns": ["/\\.yaml$/"]
   },
   "kubernetes": {
-    "ignorePaths": ["clusters"],
+    "ignorePaths": ["clusters/**"],
     "managerFilePatterns": ["/\\.yaml$/"]
   }
 }
