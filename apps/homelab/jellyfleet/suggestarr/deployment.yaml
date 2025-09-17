@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: suggestarr
+  namespace: jellyfleet
+  labels: &labels
+    app.kubernetes.io/name: suggestarr
+    app.kubernetes.io/component: media-automation
+    app.kubernetes.io/instance: suggestarr
+    app.kubernetes.io/part-of: jellyfleet
+    app.kubernetes.io/version: "latest"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: suggestarr
+      app.kubernetes.io/instance: suggestarr
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      # nodeSelector:
+      #   role: downloads-media
+      containers:
+        - name: suggestarr
+          image: ciuse99/suggestarr:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: SUGGESTARR_PORT
+              value: "5000"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            failureThreshold: 5
+      volumes:
+        - name: config
+          hostPath:
+            path: /data/configs/suggestarr
+            type: DirectoryOrCreate
