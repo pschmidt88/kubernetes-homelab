@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gotenberg
-          image: gotenberg/gotenberg:8.7
+          image: gotenberg/gotenberg:8.23
           imagePullPolicy: IfNotPresent
           resources:
             requests:
