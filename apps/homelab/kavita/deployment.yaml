@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: kavita
-          image: linuxserver/kavita:0.8.4
+          image: linuxserver/kavita:0.8.7
           imagePullPolicy: IfNotPresent
           env:
             - name: PUID
