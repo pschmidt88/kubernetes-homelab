@@ -46,7 +46,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
-      version: 34.1.0
+      version: 37.1.2
   interval: 1h0m0s
   releaseName: traefik
   targetNamespace: traefik
